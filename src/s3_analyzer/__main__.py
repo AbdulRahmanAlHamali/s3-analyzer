@@ -1,10 +1,16 @@
 import argparse
 from global_analyzer import GlobalAnalyzer
+from bucket_analyzer import BucketAnalyzer
 
 
 def main_bucket(args):
-    print('MAIN BUCKET CALLED')
-    print(args)
+    analyzer = BucketAnalyzer(bucket_name=args.bucket_name,
+                              filters=args.filter,
+                              grouping=args.group_by,
+                              size_unit=args.size_unit,
+                              prefix=args.prefix)
+    analyzer.build_info()
+    print(analyzer.get_string_info())
 
 
 def main_global(args):
@@ -32,13 +38,17 @@ if __name__ == '__main__':
     # bucket parser
     parser_bucket = subparsers.add_parser('bucket', help='Get detailed information of a specific bucket')
     parser_bucket.add_argument('bucket_name', help='The name of the bucket to analyze')
-    parser_bucket.add_argument('-gb', '--group-by', default=None, choices=['storage_type', 'encryption_type'],
+    parser_bucket.add_argument('-gb', '--group-by', default=None, choices=['storage_class', 'encryption_type'],
                                help='Options to group files by. Leave empty to show everything in one list')
     parser_bucket.add_argument('-f', '--filter', action='append', nargs=3, metavar=('property', 'comparator', 'value'),
                                help='filter the results. You can add multiple filters. The comparator can be one of: '
                                     + 'eq (equals), regex (matches regex), gt (greater than), lt (less than)')
     parser_bucket.add_argument('-su', '--size-unit', default='B', choices=['B', 'KB', 'MB', 'GB', 'TB'],
                                help='the size unit')
+    parser_bucket.add_argument('-p', '--prefix', default=None,
+                               help='only gets the objects that start with this prefix. '
+                                    + 'This is different from filters in that filters fetch all the data but then '
+                                    + 'filter it, while prefix only fetches the data that starts with that prefix')
 
     parser_bucket.set_defaults(func=main_bucket)
 
