@@ -4,6 +4,14 @@ This package is an analyzer for Amazon S3 consumption developed in Python3
 
 ## Installation
 
+The package is currently not available on PyPI. So, you first have to clone the repository, then `cd` into it and use:
+
+```
+pip install .
+```
+
+Please note that the package only works with Python3 and later version
+
 ## Usage
 
 The analyzer has two modes:
