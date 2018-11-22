@@ -23,7 +23,7 @@ class GlobalAnalyzer:
 
             bucket_info['number_of_files'] = int(sum(1 for _ in bucket.objects.all()))
 
-            bucket_info['total_size'] = int(sum(o.size for o in bucket.objects.all()))
+            bucket_info['total_size'] = float(sum(o.size for o in bucket.objects.all()))
             bucket_info['total_size'] = utils.convert_size(bucket_info['total_size'], self.size_unit)
 
             bucket_info['last_modified'] = max(bucket.objects.all(), key=lambda o: o.last_modified, default=None)

@@ -14,15 +14,24 @@ def get_grouped_info(info_list, grouping):
 
 def run_filters(info_list, filters):
     def filter_runner(entry, fltr):
+
+        entry_value = entry[fltr['property']]
+        if type(entry_value) == int:
+            filter_value = int(fltr['value'])
+        elif type(entry_value) == float:
+            filter_value = float(fltr['value'])
+        else:
+            filter_value = fltr['value']
+
         if fltr['operation'] == 'eq':
-            return entry[fltr['property']] == fltr['value']
+            return entry_value == filter_value
         elif fltr['operation'] == 'gt':
-            return entry[fltr['property']] > fltr['value']
+            return entry_value > filter_value
         elif fltr['operation'] == 'lt':
-            return entry[fltr['property']] < fltr['value']
+            return entry_value < filter_value
         elif fltr['operation'] == 'regex':
-            pattern = re.compile(fltr['value'])
-            return pattern.match(entry[fltr['property']])
+            pattern = re.compile(filter_value)
+            return pattern.match(entry_value)
 
     result = info_list
     for f in filters:
