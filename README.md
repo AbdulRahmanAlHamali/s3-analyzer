@@ -21,7 +21,7 @@ The analyzer has two modes:
 This mode allows you to see information about all your S3 buckets. You can access the global mode like this:
 
 ```
-python s3_analyzer global
+s3_analyzer global
 ```
 
 The global analyzer supports the following options:
@@ -37,7 +37,7 @@ The global analyzer supports the following options:
 This mode allows you to see information about a specific S3 bucket. You can access the bucket mode like this:
 
 ```
-python s3_analyzer bucket bucket_name
+s3_analyzer bucket bucket_name
 ```
 
 Where `bucket_name` is the name of your bucket
