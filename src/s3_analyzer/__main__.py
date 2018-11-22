@@ -9,13 +9,21 @@ def main_bucket(args):
                               grouping=args.group_by,
                               size_unit=args.size_unit,
                               prefix=args.prefix)
+    print('Fetching data...')
     analyzer.build_info()
+    print('********************************************')
+    print('Result:')
+    print('********************************************')
     print(analyzer.get_string_info())
 
 
 def main_global(args):
     analyzer = GlobalAnalyzer(filters=args.filter, grouping=args.group_by, size_unit=args.size_unit)
+    print('Fetching data...')
     analyzer.build_info()
+    print('********************************************')
+    print('Result:')
+    print('********************************************')
     print(analyzer.get_string_info())
 
 
