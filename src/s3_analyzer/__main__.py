@@ -46,7 +46,7 @@ if __name__ == '__main__':
     # bucket parser
     parser_bucket = subparsers.add_parser('bucket', help='Get detailed information of a specific bucket')
     parser_bucket.add_argument('bucket_name', help='The name of the bucket to analyze')
-    parser_bucket.add_argument('-gb', '--group-by', default=None, choices=['storage_class', 'encryption_type'],
+    parser_bucket.add_argument('-gb', '--group-by', default=None, choices=['storage_class'],
                                help='Options to group files by. Leave empty to show everything in one list')
     parser_bucket.add_argument('-f', '--filter', action='append', nargs=3, metavar=('property', 'comparator', 'value'),
                                help='filter the results. You can add multiple filters. The comparator can be one of: '
@@ -68,7 +68,7 @@ if __name__ == '__main__':
                                help='filter the results. You can add multiple filters. The comparator can be one of: '
                                     + 'eq (equals), regex (matches regex), gt (greater than), lt (less than)')
     parser_global.add_argument('-su', '--size-unit', default='B', choices=['B', 'KB', 'MB', 'GB', 'TB'],
-                               help='the size unit')
+                               help='The unit to use for sizes')
 
     parser_global.set_defaults(func=main_global)
 
