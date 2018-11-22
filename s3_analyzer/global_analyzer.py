@@ -1,5 +1,8 @@
 import boto3
-import utils
+try:
+    from . import utils
+except Exception:
+    import utils
 import math
 from ast import literal_eval
 

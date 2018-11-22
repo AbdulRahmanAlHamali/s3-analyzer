@@ -1,6 +1,8 @@
 import boto3
-import utils
-
+try:
+    from . import utils
+except Exception:
+    import utils
 
 class BucketAnalyzer:
 

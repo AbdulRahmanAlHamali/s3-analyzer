@@ -1,6 +1,10 @@
 import argparse
-from global_analyzer import GlobalAnalyzer
-from bucket_analyzer import BucketAnalyzer
+try:
+    from .global_analyzer import GlobalAnalyzer
+    from .bucket_analyzer import BucketAnalyzer
+except Exception: #ImportError
+    from global_analyzer import GlobalAnalyzer
+    from bucket_analyzer import BucketAnalyzer
 
 
 def main_bucket(args):
@@ -27,8 +31,7 @@ def main_global(args):
     print(analyzer.get_string_info())
 
 
-if __name__ == '__main__':
-
+def main():
     def transform_filters(filters):
         result = []
         for f in filters:
@@ -81,4 +84,8 @@ if __name__ == '__main__':
             parser.error(e)
 
     args.func(args)
+
+
+if __name__ == '__main__':
+    main()
 

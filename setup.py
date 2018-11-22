@@ -8,6 +8,9 @@ setup(name='s3_analyzer',
       author_email='a.alhamali93@gmail.com',
       license='MIT',
       packages=['s3_analyzer'],
+      entry_points = {
+          'console_scripts': ['s3_analyzer=s3_analyzer.__main__:main']
+      },
       install_requires=[
         'altgraph==0.16.1',
         'boto3==1.9.48',
