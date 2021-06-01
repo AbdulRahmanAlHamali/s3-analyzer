@@ -24,6 +24,6 @@ setup(name='s3_analyzer',
         's3transfer==0.1.13',
         'six==1.11.0',
         'tabulate==0.8.2',
-        'urllib3==1.24.1'
+        'urllib3==1.26.5'
       ],
       zip_safe=False)
